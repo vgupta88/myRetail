@@ -3,7 +3,6 @@ package com.myretail.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,25 +44,15 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ResponseEntity<Product> update(Product product, String id) {
-		Optional<Product> savedProduct = productRepository.findById(id);
-		if(savedProduct.isPresent()) 
-			savedProduct.get().setCurrentPrice(product.getCurrentPrice());
-		Product updatedProduct = productRepository.save(savedProduct.get());
+		Product updatedProduct = productRepository.save(product);
 		ResponseEntity<Product> respEntity = new ResponseEntity<Product>(updatedProduct, HttpStatus.OK);
 		return respEntity;
 	}
 
 	@Override
 	public ResponseEntity<Product> delete(String id) {
-		Optional<Product> savedProduct = productRepository.findById(id);
-		ResponseEntity<Product> respEntity = null;
-		if(savedProduct.isPresent()) {
-			productRepository.delete(savedProduct.get());
-			respEntity = new ResponseEntity<Product>(HttpStatus.OK);
-		}
-		else {
-			respEntity = new ResponseEntity<Product>(HttpStatus.BAD_REQUEST);
-		}
+		productRepository.deleteById(id);
+		ResponseEntity<Product> respEntity = new ResponseEntity<Product>(HttpStatus.OK);
 		return respEntity;
 	}
 
