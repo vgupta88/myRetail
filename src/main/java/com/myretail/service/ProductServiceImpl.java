@@ -45,10 +45,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ResponseEntity<Product> update(Product product, String id) {
-		ModelMapper mapper=new ModelMapper();
 		Optional<Product> savedProduct = productRepository.findById(id);
 		if(savedProduct.isPresent()) 
-			mapper.map(product, savedProduct);
+			savedProduct.get().setCurrentPrice(product.getCurrentPrice());
 		Product updatedProduct = productRepository.save(savedProduct.get());
 		ResponseEntity<Product> respEntity = new ResponseEntity<Product>(updatedProduct, HttpStatus.OK);
 		return respEntity;
