@@ -79,6 +79,14 @@ public class MyRetailApplicationTests {
 
 	}
 	
+	@Test
+	public void testDeleteProduct() {
+		Product p = createSampleProduct();
+		Mockito.doNothing().when(productRepository).deleteById(p.getId());
+		productService.delete(p.getId());
+		Mockito.verify(productRepository, Mockito.times(1)).deleteById(p.getId());
+	}
+	
 	private Product createSampleProduct() {
 		Product p = new Product();
 		p.setId("12345");
