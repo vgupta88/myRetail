@@ -12,6 +12,11 @@ This project is a basic Spring boot - Mongo CRUD API for Product Management for 
 - Spring boot
 - MongoDB
 
+### Testing 
+```sh
+$ mvn test
+```
+
 ### Executing 
 ```sh
 $ mvn spring-boot:run
