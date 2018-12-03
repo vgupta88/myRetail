@@ -1,7 +1,5 @@
 package com.myretail.domain;
 
-import java.math.BigDecimal;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,11 +10,11 @@ public class Product {
 	@Id
 	private String id;
 	
-	private String name;
+	private String currentPrice;
 	
-	private String category;
+	private String currencyCode;
 	
-	private BigDecimal price;
+	private String description;
 
 	public String getId() {
 		return id;
@@ -26,28 +24,29 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getCurrentPrice() {
+		return currentPrice;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCurrentPrice(String currentPrice) {
+		this.currentPrice = currentPrice;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getCurrencyCode() {
+		return currencyCode;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCurrencyCode(String currencyCode) {
+		this.currencyCode = currencyCode;
 	}
 
-	public BigDecimal getPrice() {
-		return price;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
 
 }
