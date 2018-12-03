@@ -25,7 +25,7 @@ $ mvn spring-boot:run
 - The APIs are accessible via a Basic Authentication credentials setup. Use testuser/usersecret for a sample user setup.
 
 ## TODO 
-- Write Unit Tests
+- Improve Teat Coverage
 - Setup SonarQube integration
 - Deploy on Cloud using Docker and AWS
 - Improve on API Security
